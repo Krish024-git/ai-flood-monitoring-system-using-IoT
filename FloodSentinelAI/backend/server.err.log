@@ -1,0 +1,122 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\krish\\Desktop\\iot\\FloodSentinelAI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2820] using WatchFiles
+INFO:     Started server process [15820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15820]
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\server.py", line 79, in serve
+    await self._serve(sockets)
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 449, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Users\krish\AppData\Local\Programs\Python\Python314\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\app\main.py", line 1, in <module>
+    from flask import Flask, jsonify, render_template, request
+ModuleNotFoundError: No module named 'flask'
+WARNING:  WatchFiles detected changes in '.venv\Lib\site-packages\itsdangerous\timed.py', '.venv\Lib\site-packages\flask\app.py', '.venv\Lib\site-packages\itsdangerous\serializer.py', '.venv\Lib\site-packages\jinja2\debug.py', '.venv\Lib\site-packages\blinker\base.py', '.venv\Lib\site-packages\flask\sessions.py', '.venv\Lib\site-packages\werkzeug\local.py', '.venv\Lib\site-packages\werkzeug\datastructures\range.py', '.venv\Lib\site-packages\flask\config.py', '.venv\Lib\site-packages\werkzeug\test.py', '.venv\Lib\site-packages\werkzeug\_internal.py', '.venv\Lib\site-packages\werkzeug\debug\console.py', '.venv\Lib\site-packages\werkzeug\__init__.py', '.venv\Lib\site-packages\jinja2\compiler.py', '.venv\Lib\site-packages\werkzeug\datastructures\structures.py', '.venv\Lib\site-packages\werkzeug\sansio\multipart.py', '.venv\Lib\site-packages\blinker\__init__.py', '.venv\Lib\site-packages\werkzeug\middleware\shared_data.py', '.venv\Lib\site-packages\werkzeug\debug\__init__.py', '.venv\Lib\site-packages\itsdangerous\_json.py', '.venv\Lib\site-packages\werkzeug\datastructures\accept.py', '.venv\Lib\site-packages\werkzeug\user_agent.py', '.venv\Lib\site-packages\werkzeug\datastructures\csp.py', '.venv\Lib\site-packages\jinja2\nodes.py', '.venv\Lib\site-packages\werkzeug\datastructures\file_storage.py', '.venv\Lib\site-packages\flask\sansio\scaffold.py', '.venv\Lib\site-packages\jinja2\optimizer.py', '.venv\Lib\site-packages\werkzeug\urls.py', '.venv\Lib\site-packages\jinja2\exceptions.py', '.venv\Lib\site-packages\flask\sansio\app.py', '.venv\Lib\site-packages\werkzeug\middleware\profiler.py', '.venv\Lib\site-packages\werkzeug\debug\repr.py', '.venv\Lib\site-packages\jinja2\meta.py', '.venv\Lib\site-packages\werkzeug\sansio\request.py', '.venv\Lib\site-packages\jinja2\lexer.py', '.venv\Lib\site-packages\werkzeug\formparser.py', '.venv\Lib\site-packages\werkzeug\http.py', '.venv\Lib\site-packages\itsdangerous\exc.py', '.venv\Lib\site-packages\flask\__init__.py', '.venv\Lib\site-packages\werkzeug\routing\__init__.py', '.venv\Lib\site-packages\werkzeug\debug\tbtools.py', '.venv\Lib\site-packages\werkzeug\sansio\utils.py', '.venv\Lib\site-packages\werkzeug\utils.py', '.venv\Lib\site-packages\jinja2\__init__.py', '.venv\Lib\site-packages\flask\cli.py', '.venv\Lib\site-packages\werkzeug\datastructures\etag.py', '.venv\Lib\site-packages\flask\views.py', '.venv\Lib\site-packages\flask\helpers.py', '.venv\Lib\site-packages\flask\json\tag.py', '.venv\Lib\site-packages\jinja2\constants.py', '.venv\Lib\site-packages\flask\blueprints.py', '.venv\Lib\site-packages\jinja2\tests.py', '.venv\Lib\site-packages\flask\globals.py', '.venv\Lib\site-packages\flask\json\__init__.py', '.venv\Lib\site-packages\werkzeug\wrappers\__init__.py', '.venv\Lib\site-packages\werkzeug\_reloader.py', '.venv\Lib\site-packages\blinker\_utilities.py', '.venv\Lib\site-packages\werkzeug\middleware\dispatcher.py', '.venv\Lib\site-packages\flask\templating.py', '.venv\Lib\site-packages\jinja2\environment.py', '.venv\Lib\site-packages\werkzeug\wrappers\request.py', '.venv\Lib\site-packages\itsdangerous\__init__.py', '.venv\Lib\site-packages\jinja2\defaults.py', '.venv\Lib\site-packages\flask\signals.py', '.venv\Lib\site-packages\flask\logging.py', '.venv\Lib\site-packages\jinja2\sandbox.py', '.venv\Lib\site-packages\jinja2\_identifier.py', '.venv\Lib\site-packages\jinja2\parser.py', '.venv\Lib\site-packages\flask\__main__.py', '.venv\Lib\site-packages\werkzeug\middleware\proxy_fix.py', '.venv\Lib\site-packages\werkzeug\sansio\__init__.py', '.venv\Lib\site-packages\itsdangerous\signer.py', '.venv\Lib\site-packages\flask\sansio\blueprints.py', '.venv\Lib\site-packages\flask\testing.py', '.venv\Lib\site-packages\jinja2\loaders.py', '.venv\Lib\site-packages\werkzeug\routing\rules.py', '.venv\Lib\site-packages\jinja2\utils.py', '.venv\Lib\site-packages\werkzeug\security.py', '.venv\Lib\site-packages\werkzeug\sansio\response.py', '.venv\Lib\site-packages\itsdangerous\url_safe.py', '.venv\Lib\site-packages\werkzeug\wrappers\response.py', '.venv\Lib\site-packages\jinja2\nativetypes.py', '.venv\Lib\site-packages\werkzeug\middleware\lint.py', '.venv\Lib\site-packages\werkzeug\sansio\http.py', '.venv\Lib\site-packages\jinja2\filters.py', '.venv\Lib\site-packages\werkzeug\routing\map.py', '.venv\Lib\site-packages\flask\typing.py', '.venv\Lib\site-packages\werkzeug\exceptions.py', '.venv\Lib\site-packages\jinja2\idtracking.py', '.venv\Lib\site-packages\jinja2\visitor.py', '.venv\Lib\site-packages\jinja2\ext.py', '.venv\Lib\site-packages\werkzeug\routing\matcher.py', '.venv\Lib\site-packages\werkzeug\wsgi.py', '.venv\Lib\site-packages\jinja2\async_utils.py', '.venv\Lib\site-packages\werkzeug\datastructures\__init__.py', '.venv\Lib\site-packages\werkzeug\testapp.py', '.venv\Lib\site-packages\werkzeug\serving.py', '.venv\Lib\site-packages\flask\wrappers.py', '.venv\Lib\site-packages\werkzeug\datastructures\mixins.py', '.venv\Lib\site-packages\markupsafe\_native.py', '.venv\Lib\site-packages\werkzeug\datastructures\cache_control.py', '.venv\Lib\site-packages\flask\json\provider.py', '.venv\Lib\site-packages\werkzeug\middleware\__init__.py', '.venv\Lib\site-packages\werkzeug\datastructures\headers.py', '.venv\Lib\site-packages\werkzeug\routing\exceptions.py', '.venv\Lib\site-packages\werkzeug\datastructures\auth.py', '.venv\Lib\site-packages\flask\ctx.py', '.venv\Lib\site-packages\jinja2\runtime.py', '.venv\Lib\site-packages\werkzeug\routing\converters.py', '.venv\Lib\site-packages\flask\debughelpers.py', '.venv\Lib\site-packages\markupsafe\__init__.py', '.venv\Lib\site-packages\itsdangerous\encoding.py', '.venv\Lib\site-packages\werkzeug\middleware\http_proxy.py', '.venv\Lib\site-packages\jinja2\bccache.py'. Reloading...
+INFO:     Started server process [19012]
+INFO:     Waiting for application startup.
+INFO:     ASGI 'lifespan' protocol appears unsupported.
+INFO:     Application startup complete.
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\asgi2.py", line 14, in __call__
+    instance = self.app(scope)
+TypeError: Flask.__call__() missing 1 required positional argument: 'start_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\asgi2.py", line 14, in __call__
+    instance = self.app(scope)
+TypeError: Flask.__call__() missing 1 required positional argument: 'start_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\asgi2.py", line 14, in __call__
+    instance = self.app(scope)
+TypeError: Flask.__call__() missing 1 required positional argument: 'start_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\Desktop\iot\FloodSentinelAI\backend\.venv\Lib\site-packages\uvicorn\middleware\asgi2.py", line 14, in __call__
+    instance = self.app(scope)
+TypeError: Flask.__call__() missing 1 required positional argument: 'start_response'

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111f">
+    <title>FloodSentinelAI Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css?v=20260510-timeline" rel="stylesheet">
+  </head>
+  <body class="app-body admin-page">
+    <nav class="top-nav">
+      <a class="brand-mark" href="/">
+        <span class="brand-icon">FS</span>
+        <span>FloodSentinelAI</span>
+      </a>
+      <div class="nav-actions">
+        <span id="liveClock" class="live-clock">--</span>
+        <a href="/" class="nav-btn">User Dashboard</a>
+        <a href="/dashboard" class="nav-btn primary">IoT Dashboard</a>
+      </div>
+    </nav>
+
+    <main class="admin-shell">
+      <section id="adminLogin" class="admin-login-wrap">
+        <form id="adminLoginForm" class="entry-card admin-login-card">
+          <p class="eyebrow subtle">Restricted area</p>
+          <h1 class="admin-title">Admin Panel</h1>
+          <p class="muted">Enter admin credentials to view visitor and location access records.</p>
+          <label for="adminUser">Admin ID</label>
+          <input id="adminUser" autocomplete="username" required>
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" type="password" autocomplete="current-password" required>
+          <button class="cta-btn full" type="submit">Login</button>
+          <div id="adminMessage" class="form-message"></div>
+        </form>
+      </section>
+
+      <section id="adminDashboard" class="content-section hidden">
+        <div class="section-heading admin-heading">
+          <div>
+            <p class="eyebrow">Database dashboard</p>
+            <h2>Admin Control Center</h2>
+          </div>
+          <button id="logoutBtn" class="ghost-btn compact" type="button">Logout</button>
+        </div>
+
+        <div class="admin-grid">
+          <div class="panel table-panel">
+            <div class="panel-title">
+              <h2>Visitors</h2>
+              <button id="refreshAdminBtn" class="ghost-btn compact" type="button">Refresh</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
+                <tbody id="visitorsBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel table-panel">
+            <h2>Location access log</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Email</th><th>Phone</th><th>State</th><th>City</th><th>Status</th><th>Time</th></tr></thead>
+                <tbody id="accessBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/js/admin.js?v=20260510-type"></script>
+  </body>
+</html>

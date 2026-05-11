@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111f">
+    <title>FloodSentinelAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"]
+            },
+            boxShadow: {
+              neon: "0 0 42px rgba(34, 211, 238, 0.22)",
+              danger: "0 0 54px rgba(248, 113, 113, 0.35)"
+            }
+          }
+        }
+      };
+    </script>
+    <link href="/static/css/styles.css?v=20260510-timeline" rel="stylesheet">
+  </head>
+  <body class="app-body">
+    <nav class="top-nav">
+      <a class="brand-mark" href="/">
+        <span class="brand-icon">FS</span>
+        <span>FloodSentinelAI</span>
+      </a>
+      <div class="nav-actions">
+        <span id="liveClock" class="live-clock">--</span>
+        <a href="/dashboard" class="nav-btn primary">IoT Dashboard</a>
+        <a href="#reports" class="nav-btn">Reports</a>
+        <a href="/admin" class="nav-btn">Admin</a>
+      </div>
+    </nav>
+
+    <main class="site-shell">
+      <section class="hero-section">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">India flood intelligence workspace</p>
+            <h1>FloodSentinelAI</h1>
+            <p class="hero-lead">A premium AI-powered flood command platform for live IoT telemetry, river reports, weather-aware risk analysis, and satellite image interpretation.</p>
+            <div class="hero-actions">
+              <button id="openDashboardBtn" class="cta-btn" type="button">Open Live Dashboard</button>
+              <button id="generateReportBtn" class="ghost-btn" type="button">Generate Report</button>
+            </div>
+            <div class="hero-stats">
+              <div><strong>5 sec</strong><span>Live IoT polling</span></div>
+              <div><strong>AI Risk</strong><span>Weather + river scoring</span></div>
+              <div><strong>GSM</strong><span>SIM800L alert workflow</span></div>
+            </div>
+          </div>
+
+          <form id="visitorForm" class="entry-card">
+            <p class="eyebrow subtle">Secure access</p>
+            <h2>Start exploring</h2>
+            <p class="muted">Save visitor details before opening the report tools.</p>
+            <label for="emailInput">Email address</label>
+            <input id="emailInput" type="email" placeholder="name@example.com" required>
+            <label for="phoneInput">Phone number</label>
+            <input id="phoneInput" type="tel" placeholder="+91 98765 43210" required>
+            <button class="cta-btn full" type="submit">Continue</button>
+            <div id="visitorMessage" class="form-message"></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="feature-band">
+        <div class="feature-card"><span>01</span><strong>NodeMCU telemetry</strong><p>Water level, flow rate, flood state, SMS status, and field-node health.</p></div>
+        <div class="feature-card"><span>02</span><strong>Weather intelligence</strong><p>India-only city catalog with river-aware flow and risk interpretation.</p></div>
+        <div class="feature-card"><span>03</span><strong>Satellite ML</strong><p>Upload image evidence and build an ordered prediction timeline.</p></div>
+      </section>
+
+      <section id="reports" class="content-section locked">
+        <div class="section-heading">
+          <p class="eyebrow">River and weather reports</p>
+          <h2>Choose an Indian location</h2>
+        </div>
+
+        <div class="reports-layout">
+          <div class="panel">
+            <div id="locationTabs" class="segmented-control">
+              <button class="active" data-mode="select" type="button">State and City</button>
+              <button data-mode="live" type="button">Live Location</button>
+            </div>
+
+            <div id="selectMode">
+              <label for="stateSelect">State</label>
+              <select id="stateSelect"></select>
+              <label for="citySelect">City</label>
+              <select id="citySelect"></select>
+              <button id="areaReportBtn" class="cta-btn full" type="button">Get Area Report</button>
+            </div>
+
+            <div id="liveMode" class="hidden">
+              <p class="muted">Use browser location to find the nearest supported Indian city and analyze nearby weather conditions.</p>
+              <button id="liveReportBtn" class="cta-btn full" type="button">Use Live Location</button>
+            </div>
+          </div>
+
+          <div class="report-space">
+            <div class="report-grid">
+              <div class="metric-card status-card"><span>Status</span><strong id="riskStatus">Locked</strong></div>
+              <div class="metric-card"><span>River</span><strong id="riverName">--</strong></div>
+              <div class="metric-card"><span>Water Level</span><strong id="waterLevel">-- m</strong></div>
+              <div class="metric-card"><span>Flow Speed</span><strong id="flowSpeed">-- m/s</strong></div>
+              <div class="metric-card"><span>Wind Speed</span><strong id="windSpeed">-- km/h</strong></div>
+              <div class="metric-card"><span>Water Quality</span><strong id="waterQuality">--</strong></div>
+            </div>
+
+            <div class="panel analysis-panel">
+              <div class="panel-title">
+                <div>
+                  <p class="eyebrow subtle">Weather pattern analysis</p>
+                  <h2 id="reportLocation">No report selected</h2>
+                </div>
+                <span id="riskScore" class="score-pill">--</span>
+              </div>
+              <p id="riskExplanation" class="analysis-copy">Submit your details and choose a location to generate a report.</p>
+              <p id="safeDuration" class="analysis-copy strong"></p>
+              <small id="dataNote" class="muted"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="satellite-layout">
+          <div class="panel">
+            <p class="eyebrow subtle">Satellite ML</p>
+            <h2>Image analysis</h2>
+            <form id="satelliteForm">
+              <input id="imageInput" type="file" accept="image/*" required>
+              <button class="cta-btn full" type="submit">Analyze Image</button>
+            </form>
+          </div>
+          <div class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow subtle">Sequential prediction data</p>
+                <h2>Satellite result timeline</h2>
+              </div>
+              <div class="timeline-actions">
+                <button id="clearTimelineBtn" class="ghost-btn compact danger" type="button">Clear</button>
+                <a class="ghost-btn compact" href="/api/predictions/export">CSV</a>
+              </div>
+            </div>
+            <ol id="imageTimeline" class="timeline">
+              <li>Upload a satellite image to build the ordered prediction timeline.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/js/app.js?v=20260510-timeline-nolocation"></script>
+  </body>
+</html>
