@@ -1,6 +1,5 @@
 from datetime import datetime
 from typing import Optional
-
 from pydantic import BaseModel, Field
 
 
@@ -68,23 +67,32 @@ class LiveLocationReportRequest(BaseModel):
 
 
 class SensorUpdateRequest(BaseModel):
-    sensor_id: str = "nodemcu-esp8266"
-    location_name: str = "Flood sensor"
-    latitude: float = Field(0.0, ge=-90, le=90)
-    longitude: float = Field(0.0, ge=-180, le=180)
+    sensor_id: str = "esp32-floodnode-01"
+    location_name: str = "Ganga Basin Node 1"
+    latitude: float = Field(28.6139, ge=-90, le=90)
+    longitude: float = Field(77.2090, ge=-180, le=180)
     water_level_cm: float = Field(..., ge=0)
     flow_rate_lpm: float = Field(..., ge=0)
-    sms_status: str = "Not Sent"
+    temperature_c: float = Field(25.0, ge=-40, le=85)
+    humidity_pct: float = Field(60.0, ge=0, le=100)
+    rain_status: str = "No Rain"
+    rain_value: int = Field(4095, ge=0, le=4095)
+    sms_status: str = "Standby"
     message: Optional[str] = None
 
 
 class SensorHistoryItem(BaseModel):
+    id: int
     sensor_id: str
     location_name: str
     latitude: float
     longitude: float
     water_level_cm: float
     flow_rate_lpm: float
+    temperature_c: float
+    humidity_pct: float
+    rain_status: str
+    rain_value: int
     flood_status: str
     sms_status: str
     alert_active: int
@@ -97,3 +105,15 @@ class SensorHistoryItem(BaseModel):
 class SensorDataResponse(BaseModel):
     latest: Optional[SensorHistoryItem] = None
     history: list[SensorHistoryItem] = []
+
+
+# Auth Schemas
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str
+    username: str

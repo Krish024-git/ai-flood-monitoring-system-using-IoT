@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from sqlalchemy import DateTime, Float, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -7,6 +6,7 @@ from app.database import Base
 
 
 class IotReading(Base):
+    """Fallback database table for old river location telemetry."""
     __tablename__ = "iot_readings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
@@ -21,6 +21,7 @@ class IotReading(Base):
 
 
 class SensorReading(Base):
+    """Primary database table for ESP32 hardware node telemetry."""
     __tablename__ = "sensor_readings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
@@ -30,6 +31,10 @@ class SensorReading(Base):
     longitude: Mapped[float] = mapped_column(Float)
     water_level_cm: Mapped[float] = mapped_column(Float)
     flow_rate_lpm: Mapped[float] = mapped_column(Float)
+    temperature_c: Mapped[float] = mapped_column(Float, default=25.0)
+    humidity_pct: Mapped[float] = mapped_column(Float, default=60.0)
+    rain_status: Mapped[str] = mapped_column(String(80), default="No Rain")
+    rain_value: Mapped[int] = mapped_column(Integer, default=4095)
     flood_status: Mapped[str] = mapped_column(String(80), index=True)
     sms_status: Mapped[str] = mapped_column(String(80), index=True)
     alert_active: Mapped[int] = mapped_column(Integer, default=0)
@@ -38,6 +43,7 @@ class SensorReading(Base):
 
 
 class PredictionRecord(Base):
+    """Database records for AI model historical predictions."""
     __tablename__ = "prediction_records"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
@@ -56,6 +62,7 @@ class PredictionRecord(Base):
 
 
 class Visitor(Base):
+    """Database records for newsletter/alert registration signup."""
     __tablename__ = "visitors"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
@@ -65,6 +72,7 @@ class Visitor(Base):
 
 
 class LocationAccess(Base):
+    """Logging dashboard access and report generation queries."""
     __tablename__ = "location_accesses"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
